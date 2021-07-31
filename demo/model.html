@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS Model - MegaAds Training</title>
+</head>
+<body ng-app="megaads-training">
+
+    <div ng-controller="TrainingController">
+        Name: <input type="text" ng-model="name" />
+        <h1>You entered: {{ name }}</h1>
+
+        Email: <input type="email" ng-model="email" />
+        <h1>You entered: {{ email }}</h1>
+    </div>
+
+    <script type="text/javascript" src="./../assets/js/angular.min.js"></script>
+    <script type="text/javascript" src="./../assets/js/angular-sanitize.min.js"></script>
+    <script type="text/javascript" src="./../assets/js/angular-animate.min.js"></script>
+    <script type="text/javascript" src="./../assets/js/angular-route.min.js"></script>
+
+    <script type="text/javascript">
+        var app = angular.module("megaads-training", []);
+        app.controller('TrainingController', function ($scope) {
+            $scope.name = "Tuấn Anh Zippy";
+            $scope.email = 'kieutuananh1995@gmail.com';
+        });
+    </script>
+
+</body>
+</html>

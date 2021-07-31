@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS Filters - MegaAds Training</title>
+</head>
+<body ng-app="megaads-training">
+
+    <div ng-controller="TrainingController">
+        <p>{{ fullName() | uppercase }}</p>
+    
+        <ul>
+            <li ng-repeat="member in members | orderBy:'age':true">
+                {{ member.name | propercase }}
+                {{ member.name + ', ' + member.age }} | {{ member.sallary | currency:'USD' }}
+            </li>
+        </ul>
+    </div>
+
+    
+
+    <script type="text/javascript" src="./../assets/js/angular.min.js"></script>
+    <script type="text/javascript" src="./../assets/js/angular-sanitize.min.js"></script>
+    <script type="text/javascript" src="./../assets/js/angular-animate.min.js"></script>
+    <script type="text/javascript" src="./../assets/js/angular-route.min.js"></script>
+
+    <script type="text/javascript">
+        var app = angular.module("megaads-training", []);
+        app.filter('propercase', function () {
+            return function(str) {
+                return str.replace(
+                    /\w\S*/g, function(txt) {
+                        return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+                    }
+                );
+            }
+        });
+        app.controller('TrainingController', function ($scope) {
+            $scope.firstName = "Tuấn Anh";
+            $scope.lastName = "Zippy";
+
+            $scope.members = [
+                {id: 1, name: 'Phu Luong', age: 31, sallary: 5000},
+                {id: 2, name: 'Diem Ngo', age: 25, sallary: 1000},
+                {id: 3, name: 'Ngan Le', age: 24, sallary: 1500},
+                {id: 4, name: 'Huu Trang', age: 22, sallary: 2500},
+                {id: 5, name: 'lap dam', age: 27, sallary: 4500}
+            ];
+
+
+            $scope.fullName = function() {
+                return $scope.firstName + " " + $scope.lastName;
+            };
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS Controllers - MegaAds Training</title>
+</head>
+<body ng-app="megaads-training">
+
+    <div ng-controller="TrainingController">
+        <p>{{ fullName() }}</p>
+        <p>The scope of the controller's favorite color: {{color}}</p>
+
+        <ui-select ng-model="selected.value" theme="selectize">
+            <ui-select-match>
+                <span ng-bind="$select.selected.name"></span>
+            </ui-select-match>
+            <ui-select-choices repeat="item in (itemArray | filter: $select.search) track by item.id">
+                <span ng-bind="item.name"></span>
+            </ui-select-choices>
+        </ui-select>
+
+
+    </div>
+
+    <p>The rootScope's favorite color: {{ color }}</p>
+
+    <script type="text/javascript" src="./../assets/js/angular.min.js"></script>
+    <script type="text/javascript" src="./../assets/js/angular-sanitize.min.js"></script>
+    <script type="text/javascript" src="./../assets/js/angular-animate.min.js"></script>
+    <script type="text/javascript" src="./../assets/js/angular-route.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-select/0.19.8/select.min.css" />
+    <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.default.css" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-select/0.19.8/select.min.js"></script>
+
+    <script type="text/javascript">
+        var app = angular.module("megaads-training", ['ngSanitize', 'ui.select']);
+        app.run(function ($rootScope) {
+            $rootScope.color = 'blue';
+        });
+        app.controller('TrainingController', function ($scope) {
+            $scope.firstName = "Tuấn Anh";
+            $scope.lastName = "Zippy";
+            $scope.color = 'red';
+            $scope.fullName = function() {
+                return $scope.firstName + " " + $scope.lastName;
+            };
+
+            $scope.itemArray = [
+                {id: 1, name: 'first'},
+                {id: 2, name: 'second'},
+                {id: 3, name: 'third'},
+                {id: 4, name: 'fourth'},
+                {id: 5, name: 'fifth'},
+            ];
+
+            $scope.selected = { value: $scope.itemArray[0] };
+            
+        });
+    </script>
+
+</body>
+</html>

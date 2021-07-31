@@ -1,0 +1,10 @@
+<div class="FiltersController">
+    <p>{{ fullName() | uppercase }}</p>
+    
+    <ul>
+        <li ng-repeat="member in members | orderBy:'age':true">
+            {{ member.name | propercase }}
+            {{ member.name + ', ' + member.age }} | {{ member.sallary | currency:'USD' }}
+        </li>
+    </ul>
+</div>

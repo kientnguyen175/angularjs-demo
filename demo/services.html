@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS Services - MegaAds Training</title>
+</head>
+<body ng-app="megaads-training">
+
+    <div ng-controller="TrainingController">
+        <h1>Factory Multiply: {{ mathService.multiply(5, 5) }}</h1>
+        <h1>Service Utilities: {{ utilService.toString(100000) }}</h1>
+    </div>
+
+    
+
+    <script type="text/javascript" src="./../assets/js/angular.min.js"></script>
+    <script type="text/javascript" src="./../assets/js/angular-sanitize.min.js"></script>
+    <script type="text/javascript" src="./../assets/js/angular-animate.min.js"></script>
+    <script type="text/javascript" src="./../assets/js/angular-route.min.js"></script>
+
+    <script type="text/javascript">
+        var app = angular.module("megaads-training", []);
+        app.factory('mathService', function() {
+            var factory = {};
+            factory.multiply = function(a, b) {
+                return a * b;
+            }
+            return factory;
+        }); 
+        app.service('utilService', function(mathService) {
+            this.toString = function(number) {
+                return number.toString();
+            }
+        });
+        app.controller('TrainingController', function ($scope, mathService, utilService) {
+            $scope.mathService = mathService;
+            $scope.utilService = utilService;
+            //some things
+        });
+    </script>
+
+</body>
+</html>

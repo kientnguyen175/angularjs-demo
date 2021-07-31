@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS Directives - MegaAds Training</title>
+</head>
+<body ng-app="megaads-training">
+
+    <div ng-init="names=['Jani','Hege','Kai']">
+        <ul>
+          <li ng-repeat="x in names">
+            {{ x }}
+          </li>
+        </ul>
+    </div>
+
+    <megaads-training-directive></megaads-training-directive>
+    <div megaads-training-directive></div>
+    <div class="megaads-training-directive"></div>
+    <!-- directive: megaads-training-directive -->
+
+    <div directive1 directive3 directive2></div>
+
+    <script type="text/javascript" src="./../assets/js/angular.min.js"></script>
+    <script type="text/javascript" src="./../assets/js/angular-sanitize.min.js"></script>
+    <script type="text/javascript" src="./../assets/js/angular-animate.min.js"></script>
+    <script type="text/javascript" src="./../assets/js/angular-route.min.js"></script>
+
+    <script type="text/javascript">
+        var app = angular.module("megaads-training", []);
+        app.directive("megaadsTrainingDirective", function() {
+            return {
+                restrict : "EACM",
+                replace: true,
+                template : "<h1>MegaAds Training Plan!</h1>"
+            };
+        });
+
+        app.directive('directive1', function(){
+            return {
+            restrict: "A",
+            template: "<h3>This is directive1</h3>",
+            priority: 1
+        }});
+        app.directive('directive2', function(){
+            return {
+            restrict: "A",
+            template: "<h3>This is directive2</h3>",
+            priority: 2
+        }});
+        app.directive('directive3', function(){
+            return {
+            restrict: "A",
+            template: "<h3>This is directive3</h3>",
+            priority: 3
+        }});
+    
+    </script>
+
+</body>
+</html>

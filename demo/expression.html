@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS Expression - MegaAds Training</title>
+</head>
+<body ng-app="">
+
+    <p>MegaAds Technical: {{ 5 + 5 }} Members</p>
+
+    <p ng-init="firstName='Tuấn Anh';lastName='Zippy'">
+        My name is {{ firstName + " " + lastName }}
+    </p>
+
+    <p ng-init="quantity=1;cost=5">
+        Total in dollar: {{ quantity * cost }}
+    </p>
+
+    <p>Total in dollar: 
+        <span ng-bind-html="quantity * cost"></span>
+    </p>
+
+    <p ng-init="person={firstName:'John',lastName:'Doe'}">
+        The name is {{ person.lastName }}
+    </p>
+
+    <div ng-init="points=[1,15,19,2,40]">
+        <p>The third result is {{ points[2] }}</p>
+
+        <p>
+            The third result is <span ng-bind="points[2]"></span>
+        </p>
+    </div>
+
+    <script type="text/javascript" src="./../assets/js/angular.min.js"></script>
+    <script type="text/javascript" src="./../assets/js/angular-sanitize.min.js"></script>
+    <script type="text/javascript" src="./../assets/js/angular-animate.min.js"></script>
+    <script type="text/javascript" src="./../assets/js/angular-route.min.js"></script>
+</body>
+</html>

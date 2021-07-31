@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS Routing - MegaAds Training</title>
+</head>
+<body ng-app="megaads-training">
+
+    <h1>Angualar Concepts</h1>
+
+    <ul>
+        <li><a href="#/!">Main</a></li>
+        <li><a href="#!expression">Expression</a></li>
+        <li><a href="#!filters">Filter</a></li>
+        <li><a href="#!directives">Directives</a></li>
+        <li><a href="#!model">Model</a></li>
+        <li><a href="#!controllers">Controller</a></li>
+        <li><a href="#!services">Services</a></li>
+        <li><a href="#!parameter">Routing Parameter</a></li>
+    </ul>
+
+    <hr />
+    <ng-view></ng-view>
+
+    <script type="text/javascript" src="./assets/js/angular.min.js"></script>
+    <script type="text/javascript" src="./assets/js/angular-route.min.js"></script>
+
+    <script type="text/javascript">
+        var app = angular.module("megaads-training", ["ngRoute"]);
+        app.config(['$routeProvider', function($routeProvider) {
+            $routeProvider.
+            when('/',{
+                controller: 'IndexController'
+            }).
+            when('/expression',{
+                templateUrl : './views/expression.html',
+                controller: 'ExpressionController'
+            }).
+            when("/filters", {
+                templateUrl: '/views/filters.html',
+                controller: 'FiltersController'
+            }).
+            when("/directives", {
+                templateUrl: '/views/directives.html',
+                controller: 'DirectivesController'
+            }).
+            when("/model", {
+                templateUrl: '/views/model.html',
+                controller: 'ModelController'
+            }).
+            when("/controllers", {
+                templateUrl: '/views/controllers.html',
+                controller: 'TrainingController'
+            }).
+            when("/services", {
+                templateUrl: '/views/services.html',
+                controller: 'ServicesController'
+            }).
+            when("/parameter/:pageId?", {
+                titlePage: 'This Is Parameter Page',
+                templateUrl: '/views/parameter.html',
+                controller: 'ParameterController'
+            }).
+            otherwise({
+                templateUrl: '/views/not-found.html',
+                controller: 'NotFoundController'
+            });
+        }]);
+    </script>
+    <script type="text/javascript" src="./controllers/training-controller.js"></script>
+</body>
+</html>
